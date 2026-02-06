@@ -1,73 +1,107 @@
-# React + TypeScript + Vite
+# LinkedIn Post Enhancer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI-powered Chrome extension to enhance your LinkedIn posts with better hooks, improved tone, and contextual optimization.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Quick Enhance**: One-click enhancement of your LinkedIn posts using AI
+- **Advanced Mode**: Side panel with 3 tabs for detailed content optimization
+  - **Enhance Tab**: Choose from 5 tones (Default, Excited, Story, Professional, Casual)
+  - **Hooks Tab**: Generate attention-grabbing hooks for your posts
+  - **Advanced Tab**: Contextual enhancement with role, motive, and writing style inputs
+- **Direct Insert**: Insert enhanced content directly into LinkedIn editor
 
-## React Compiler
+## Setup Instructions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Get an OpenAI API Key
 
-## Expanding the ESLint configuration
+1. Go to [OpenAI Platform](https://platform.openai.com/)
+2. Sign up or log in
+3. Navigate to API Keys section
+4. Create a new API key (starts with `sk-`)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Install Dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Build the Extension
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+This creates a `dist` folder with the production-ready extension.
+
+### 4. Load in Chrome
+
+1. Open Chrome and navigate to `chrome://extensions`
+2. Enable **Developer mode** (toggle in top-right corner)
+3. Click **Load unpacked**
+4. Select the `dist` folder from this project
+
+### 5. Configure API Key
+
+1. Click the extension icon in Chrome toolbar
+2. Enter your OpenAI API key
+3. Click **Save**
+
+## Usage
+
+### Quick Enhancement
+
+1. Go to LinkedIn and start a new post
+2. Write your draft content
+3. Click the **✨ Enhance** button below the editor
+4. Your post is instantly enhanced!
+
+### Advanced Mode
+
+1. Write your draft content on LinkedIn
+2. Click the **🎯 Advanced** button
+3. Side panel opens with 3 tabs:
+   - **Enhance**: View enhanced version, change tone, regenerate
+   - **Hooks**: Get 3 powerful hooks, copy to clipboard, generate more
+   - **Advanced**: Enter your role, motive, and writing style for contextual optimization
+4. Click **Insert into LinkedIn** to apply changes
+
+## Technology Stack
+
+- React 19
+- TypeScript
+- Vite + CRXJS
+- Tailwind CSS v4
+- Zustand (state management)
+- OpenAI SDK (client-side)
+- Tabler Icons
+
+## Development
+
+```bash
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Lint
+npm run lint
+```
+
+## Color Palette
+
+Extension uses Tailwind Neutral colors exclusively:
+
+- Backgrounds: neutral-50, neutral-100, white
+- Borders: neutral-200
+- Text: neutral-900 (primary), neutral-600 (secondary)
+- Buttons: neutral-900, neutral-600
+
+## Version
+
+**1.0.0** - MVP Release
+
+---
+
+Built with ❤️ by Nehra

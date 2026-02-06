@@ -2,15 +2,33 @@
   "manifest_version": 3,
   "name": "LinkedIn Post Enhancer",
   "version": "1.0.0",
-  "description": "Enhance your LinkedIn posts with AI",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "description": "Enhance your LinkedIn posts with AI-powered content improvement, hooks, and contextual optimization",
+  "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
+  "host_permissions": ["*://www.linkedin.com/*", "https://api.openai.com/*"],
+  "icons": {
+    "16": "logo-16.png",
+    "48": "logo-48.png",
+    "128": "logo-128.png"
+  },
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "logo-16.png",
+      "48": "logo-48.png",
+      "128": "logo-128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
   },
   "content_scripts": [
     {
       "matches": ["https://www.linkedin.com/*"],
-      "js": ["src/content.tsx"]
+      "js": ["src/content/index.ts"]
     }
   ]
 }
